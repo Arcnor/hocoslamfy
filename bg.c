@@ -26,6 +26,8 @@
 #include "game.h"
 #include "bg.h"
 
+// The width after which the background repeats. (In pixels of the screen.)
+#define BG_WIDTH 160
 // The X coordinates from which the various layers of the background start to
 // be rendered. (In meters.)
 static       float    BG_X     [BG_LAYER_COUNT] = {
@@ -57,7 +59,7 @@ void AdvanceBackground(uint32_t Milliseconds)
 	uint32_t i;
 	for (i = 0; i < BG_LAYER_COUNT; i++)
 	{
-		BG_X[i] = fmodf(BG_X[i] + BG_Speed[i] * Milliseconds / 1000, FIELD_WIDTH * 0.5f);
+		BG_X[i] = fmodf(BG_X[i] + SCREEN_WIDTH * BG_Speed[i] * Milliseconds / 1000, BG_WIDTH);
 	}
 }
 
@@ -67,7 +69,7 @@ void DrawBackground(void)
 	for (i = 0; i < BG_LAYER_COUNT; i++)
 	{
 		SDL_Rect SourceRect = {
-			.x = (int) (BG_X[i] * SCREEN_WIDTH / FIELD_WIDTH),
+			.x = (int) BG_X[i],
 			.y = 0,
 			.w = SCREEN_WIDTH,
 			.h = BG_Height[i] };
