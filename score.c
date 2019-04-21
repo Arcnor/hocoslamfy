@@ -141,16 +141,24 @@ void ToScore(uint32_t Score, enum GameOverReason GameOverReason, uint32_t HighSc
 			break;
 	}
 
-	char HighScoreString[256];
+	const char *MaybeNew;
 	if (Score > HighScore)
 	{
-		snprintf(HighScoreString, 256, "NEW High Score: %" PRIu32, Score);
+		MaybeNew = "NEW ";
+		HighScore = Score;
 		PlaySFXHighScore();
 	} else {
-		snprintf(HighScoreString, 256, "High Score: %" PRIu32, HighScore);
+		MaybeNew = "";
 	}
 
-	while ((NewLength = snprintf(ScoreMessage, Length, "%s\n\nYour score was %" PRIu32 "\n\n%s\n\nPress %s to play again\nor %s to exit", GameOverReasonString, Score, HighScoreString, GetEnterGamePrompt(), GetExitGamePrompt())) >= Length)
+	while ((NewLength = snprintf(ScoreMessage, Length,
+		"%s\n\n"
+		"Your score was %" PRIu32 "\n\n"
+		"%sHigh Score: %" PRIu32 "\n\n"
+		"Press %s to play again\nor %s to exit",
+		GameOverReasonString, Score, MaybeNew, HighScore,
+		GetEnterGamePrompt(), GetExitGamePrompt())
+		) >= Length)
 	{
 		Length = NewLength + 1;
 		ScoreMessage = realloc(ScoreMessage, Length);
