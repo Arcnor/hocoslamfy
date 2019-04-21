@@ -28,6 +28,9 @@
 #ifndef SCREEN_HEIGHT
 #define SCREEN_HEIGHT 240
 #endif
+#ifndef SCREEN_BPP
+#define SCREEN_BPP    32
+#endif
 
 #ifdef OPK
 #define DATA_PATH "./"

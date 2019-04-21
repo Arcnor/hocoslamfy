@@ -10,7 +10,7 @@ ifeq ($(TARGET), hocoslamfy-rs90)
   CC        := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-gcc
   STRIP     := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-strip
   OBJS       = platform/opendingux.o
-  DEFS      := -DOPK -DSCREEN_WIDTH=240 -DSCREEN_HEIGHT=160
+  DEFS      := -DOPK -DSCREEN_WIDTH=240 -DSCREEN_HEIGHT=160 -DSCREEN_BPP=16
 else
   CC        := gcc
   STRIP     := strip
