@@ -111,14 +111,7 @@ void Initialize(bool* Continue, bool* Error)
 	SDL_WM_SetIcon(WindowIcon, NULL);
 	SDL_WM_SetCaption("hocoslamfy", "hocoslamfy");
 
-	Screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE |
-#ifdef SDL_TRIPLEBUF
-		SDL_TRIPLEBUF
-#else
-		SDL_DOUBLEBUF
-#endif
-		);
-
+	Screen = SDL_SetVideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	if (Screen == NULL)
 	{
 		*Continue = false;  *Error = true;
