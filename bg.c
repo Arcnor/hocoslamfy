@@ -46,8 +46,13 @@ static const float    BG_Speed [BG_LAYER_COUNT] = {
 static const uint32_t BG_StartY[BG_LAYER_COUNT] = {
 	/* "Sky.png", "Mountains.png", "Clouds3.png", "Clouds2.png",
 	 * "Clouds1.png", "Grass3.png", "Grass2.png", "Grass1.png" */
+#if SCREEN_HEIGHT == 160
+	 30,  84,  12,  -2,
+	-16, 130, 138, 150
+#else
 	 50, 128,  32,  16,
 	  0, 180, 190, 204
+#endif
 };
 static const uint32_t BG_Height[BG_LAYER_COUNT] = {
 	140,  60,  28,  28,
