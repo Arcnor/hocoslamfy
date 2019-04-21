@@ -134,10 +134,18 @@ void ToScore(uint32_t Score, enum GameOverReason GameOverReason, uint32_t HighSc
 	switch (GameOverReason)
 	{
 		case FIELD_BORDER_COLLISION:
+#if SCREEN_WIDTH < 320
+			GameOverReasonString = "You flew too far away\nfrom the field";
+#else
 			GameOverReasonString = "You flew too far away from the field";
+#endif
 			break;
 		case RECTANGLE_COLLISION:
+#if SCREEN_WIDTH < 320
+			GameOverReasonString = "You crashed into\na bamboo shoot";
+#else
 			GameOverReasonString = "You crashed into a bamboo shoot";
+#endif
 			break;
 	}
 
@@ -153,8 +161,12 @@ void ToScore(uint32_t Score, enum GameOverReason GameOverReason, uint32_t HighSc
 
 	while ((NewLength = snprintf(ScoreMessage, Length,
 		"%s\n\n"
+#if SCREEN_HEIGHT < 240
+		"Score: %" PRIu32 " / %sHigh: %" PRIu32 "\n\n"
+#else
 		"Your score was %" PRIu32 "\n\n"
 		"%sHigh Score: %" PRIu32 "\n\n"
+#endif
 		"Press %s to play again\nor %s to exit",
 		GameOverReasonString, Score, MaybeNew, HighScore,
 		GetEnterGamePrompt(), GetExitGamePrompt())
