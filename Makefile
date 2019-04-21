@@ -6,10 +6,17 @@ ifeq ($(TARGET), hocoslamfy-od)
   OBJS       = platform/opendingux.o
   DEFS      := -DOPK
 else
+ifeq ($(TARGET), hocoslamfy-rs90)
+  CC        := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-gcc
+  STRIP     := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-strip
+  OBJS       = platform/opendingux.o
+  DEFS      := -DOPK -DSCREEN_WIDTH=240 -DSCREEN_HEIGHT=160
+else
   CC        := gcc
   STRIP     := strip
   OBJS       = platform/general.o
   DEFS      := 
+endif
 endif
 
 SYSROOT     := $(shell $(CC) --print-sysroot)

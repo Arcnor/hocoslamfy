@@ -22,8 +22,12 @@
 
 #include <stdbool.h>
 
+#ifndef SCREEN_WIDTH
 #define SCREEN_WIDTH  320
+#endif
+#ifndef SCREEN_HEIGHT
 #define SCREEN_HEIGHT 240
+#endif
 
 #ifdef OPK
 #define DATA_PATH "./"
