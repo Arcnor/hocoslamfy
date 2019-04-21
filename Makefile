@@ -12,10 +12,14 @@ ifeq ($(TARGET), hocoslamfy-rs90)
   OBJS       = platform/opendingux.o
   DEFS      := -DOPK -DSCREEN_WIDTH=240 -DSCREEN_HEIGHT=160 -DSCREEN_BPP=16
 else
+ifeq ($(TARGET), hocoslamfy)
   CC        := gcc
   STRIP     := strip
   OBJS       = platform/general.o
   DEFS      := 
+else
+  $(error Unknown target: $(TARGET))
+endif
 endif
 endif
 
