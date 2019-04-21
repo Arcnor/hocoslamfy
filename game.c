@@ -351,7 +351,7 @@ void GameOutputFrame()
 				RectScoreColor = SDL_MapRGB(Screen->format, 64, 255, 64); // green
 			else
 				RectScoreColor = SDL_MapRGB(Screen->format, 255, 255, 255); // white
-			PrintStringOutline32(RectScoreString,
+			PrintStringOutline(RectScoreString,
 				RectScoreColor,
 				SDL_MapRGB(Screen->format, 0, 0, 0),
 				Screen->pixels,
