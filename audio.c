@@ -59,14 +59,14 @@ bool InitializeAudio()
 
 	if (SND_Available)
 	{
-		BGM = Mix_LoadMUS(DATA_PATH "bgm.wav");
+		BGM = Mix_LoadMUS(DATA_PATH "bgm.ogg");
 		if (BGM == NULL)
 		{
-			printf("%s: Mix_LoadMUS failed: %s\n", DATA_PATH "bgm.wav", Mix_GetError());
+			printf("%s: Mix_LoadMUS failed: %s\n", DATA_PATH "bgm.ogg", Mix_GetError());
 			return false;
 		}
 		else
-			printf("Successfully loaded %s\n", DATA_PATH "bgm.wav");
+			printf("Successfully loaded %s\n", DATA_PATH "bgm.ogg");
 
 		SFX_Fly       = LoadSFX(DATA_PATH "fly.wav");
 		SFX_Pass      = LoadSFX(DATA_PATH "pass.wav");
