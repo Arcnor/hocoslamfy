@@ -1,6 +1,5 @@
 *.o
 data/*.ogg
 hocoslamfy
-hocoslamfy-od
-hocoslamfy-od.opk
+hocoslamfy-*
 .opk_data/
