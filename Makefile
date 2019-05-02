@@ -43,13 +43,11 @@ ifneq (, $(findstring MINGW, $(shell uname -s)))
 	CFLAGS+=-DDONT_USE_PWD
 endif
 
-include Makefile.rules
-
 .PHONY: all opk
 
 all: $(TARGET)
 
-$(TARGET): $(OBJS)
+include Makefile.rules
 
 opk: $(TARGET).opk
 
