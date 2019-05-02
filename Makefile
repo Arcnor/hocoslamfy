@@ -43,15 +43,24 @@ ifneq (, $(findstring MINGW, $(shell uname -s)))
 	CFLAGS+=-DDONT_USE_PWD
 endif
 
+WAVS        := $(wildcard sound/*.wav)
+OGGS        := $(WAVS:sound/%.wav=data/%.ogg)
+
+DATA_TO_CLEAN := $(OGGS)
+
 .PHONY: all opk
 
-all: $(TARGET)
+all: $(TARGET) $(OGGS)
 
 include Makefile.rules
 
+$(OGGS): data/%.ogg: sound/%.wav
+	$(SUM) "  OGG     $@"
+	$(CMD)oggenc --resample 44100 -q2 $< -o $@
+
 opk: $(TARGET).opk
 
-$(TARGET).opk: $(TARGET)
+$(TARGET).opk: $(TARGET) $(OGGS)
 	$(SUM) "  OPK     $@"
 	$(CMD)rm -rf .opk_data
 	$(CMD)cp -r data .opk_data
