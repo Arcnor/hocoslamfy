@@ -15,8 +15,8 @@ ifeq ($(TARGET), hocoslamfy-lepus)
   DEVICE    := lepus
 else
 ifeq ($(TARGET), hocoslamfy-rs90)
-  CC        := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-gcc
-  STRIP     := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-strip
+  CC        := mipsel-linux-gcc
+  STRIP     := mipsel-linux-strip
   OBJS       = platform/opendingux.o
   DEFS      := -DOPK -DSCREEN_WIDTH=240 -DSCREEN_HEIGHT=160 -DSCREEN_BPP=16
   DEVICE    := rs90
@@ -28,6 +28,7 @@ ifeq ($(TARGET), hocoslamfy)
   DEFS      := 
 else
   $(error Unknown target: $(TARGET))
+endif
 endif
 endif
 endif
