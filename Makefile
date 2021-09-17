@@ -1,11 +1,18 @@
 TARGET      ?= hocoslamfy
 
-ifeq ($(TARGET), hocoslamfy-od)
+ifeq ($(TARGET), hocoslamfy-gcw0)
   CC        := mipsel-linux-gcc
   STRIP     := mipsel-linux-strip
   OBJS       = platform/opendingux.o
   DEFS      := -DOPK
   DEVICE    := gcw0
+else
+ifeq ($(TARGET), hocoslamfy-lepus)
+  CC        := mipsel-linux-gcc
+  STRIP     := mipsel-linux-strip
+  OBJS       = platform/opendingux.o
+  DEFS      := -DOPK
+  DEVICE    := lepus
 else
 ifeq ($(TARGET), hocoslamfy-rs90)
   CC        := /opt/rs90-toolchain/bin/mipsel-rs90-linux-musl-gcc

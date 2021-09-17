@@ -2,7 +2,7 @@
 
 Name=Hocoslamfy
 Comment=Avoid the bamboo while flying with your bee
-Exec=hocoslamfy-gcw0
+Exec=hocoslamfy-lepus
 Terminal=false
 Type=Application
 Icon=hocoslamfy
